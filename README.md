@@ -19,6 +19,6 @@ https://prisma-crud-123.herokuapp.com/api/user/forget_password
 ## POST - Add Product
 https://prisma-crud-123.herokuapp.com/api/product/add_product
 ## PATCH - Update Product
-https://prisma-crud-123.herokuapp.com/api/product/update_product/<ID>
+https://prisma-crud-123.herokuapp.com/api/product/update_product/ID
 ## DEL - Delete Product
-https://prisma-crud-123.herokuapp.com/api/delete_product/<ID>
+https://prisma-crud-123.herokuapp.com/api/delete_product/ID
