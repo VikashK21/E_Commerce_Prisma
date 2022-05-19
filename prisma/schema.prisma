@@ -12,9 +12,10 @@ datasource db {
 
 model Seller {
   id            Int         @id               @default(autoincrement())
-  name          String      @unique           @db.VarChar(30)
-  email         String      @unique
-  phone_number  Int
+  name          String                        @db.VarChar(30)
+  email         String      @unique           @db.VarChar(50)
+  password      String
+  phone_number  String      @unique           @db.VarChar(20)
   gst_number    String      @unique           @db.VarChar(16)
   create_at     DateTime                      @default(now())      
   update_at     DateTime                      @updatedAt
@@ -26,7 +27,7 @@ model Product {
   id                Int         @id               @default(autoincrement())
   name              String      @unique           @db.VarChar(50)
   price             Int         
-  decription        String                        @db.VarChar(255)
+  description       String                        @db.VarChar(255)
   images            String[]      
   in_stock          Boolean                       @default(false)
   is_discounted     Boolean                       @default(false)

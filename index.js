@@ -1,18 +1,20 @@
 const express = require('express');
-const app = express();
+const main = express();
 
 const port = process.env.PORT || 8000;
 
-app.use(express.json())
-const { postSeller } = require('./routes/app.routes')
+main.use(express.json())
+main.use('/api/user', require('./routes/users.routes'));
+main.use('/api/product', require('./routes/products.routes'));
 
-app.get('/', (req, res) => {
+main.get('/', (req, res) => {
     res.send('You are standing at home page.')
 })
 
-app.post('/post/seller', postSeller)
-app.get('/sellers', getSellers)
 
-app.listen(port, () => {
-    console.log(`Listening to the port num ${port}`);
+main.listen(port, () => {
+    console.log(`Listening to the port num ${port}\n`, {
+        users: `http://localhost:${port}/api/user/`,
+        products: `http://localhost:${port}/api/product/`
+    });
 })
