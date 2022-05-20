@@ -1,6 +1,6 @@
 const app = require('express').Router();
 const joi = require('joi');
-const { authenticationToken } = require('../auth/security.auth');
+const { authorizationToken } = require('../auth/security.auth');
 const ProductCtrl = require('../controller/product.controller');
 const Products = new ProductCtrl;
 
@@ -19,7 +19,7 @@ app.get('/', async(req, res) => {
 })
 
 
-app.post('/add_product', authenticationToken, async(req, res) => {
+app.post('/add_product', authorizationToken, async(req, res) => {
     const schemaValidate = joi.object({
         name: joi.string().max(30).required(),
         price: joi.number().required(),
@@ -43,7 +43,7 @@ app.post('/add_product', authenticationToken, async(req, res) => {
     }
 })
 
-app.patch('/update_product/:id', authenticationToken, async(req, res) => {
+app.patch('/update_product/:id', authorizationToken, async(req, res) => {
     const schemaValidate = joi.object({
         name: joi.string().max(30),
         price: joi.number(),
@@ -66,7 +66,7 @@ app.patch('/update_product/:id', authenticationToken, async(req, res) => {
     }
 })
 
-app.delete('/delete_product/:id', authenticationToken, async(req, res) => {
+app.delete('/delete_product/:id', authorizationToken, async(req, res) => {
     try {
         const data = await Products.delete_product(Number(req.params.id))
         res.json(data)
