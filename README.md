@@ -1,6 +1,7 @@
 # E_Commerce_Prisma
 This is E_Commerce's APIs created, specially with the help of Prisma ORM.
 
+#
 # Users:
 ## POST - Signup
 https://prisma-crud-123.herokuapp.com/api/user/signup
@@ -15,6 +16,7 @@ https://prisma-crud-123.herokuapp.com/api/user/delete_acc
 ## PATCH - Change Password
 https://prisma-crud-123.herokuapp.com/api/user/forget_password
 
+#
 # Products:
 ## POST - Add Product
 https://prisma-crud-123.herokuapp.com/api/product/add_product
