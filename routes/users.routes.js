@@ -52,7 +52,7 @@ app.post('/login', forLogout, async(req, res) => {
     try {
         const result = await Users.find_user(req.body);
         if (typeof(result)=='object') {
-            const token = await authorizationToken(result);
+            const token = await authenticationToken(result);
             return res.cookie('token', token).json(result);
         }
         res.send(result)
@@ -62,7 +62,7 @@ app.post('/login', forLogout, async(req, res) => {
     }
 });
 
-app.patch('/update_acc', authenticationToken, async(req, res) => {
+app.patch('/update_acc', authorizationToken, async(req, res) => {
     const schemaValidate = joi.object({
         name: joi.string().max(30),
         email: joi.string().email().max(50),
@@ -82,7 +82,7 @@ app.patch('/update_acc', authenticationToken, async(req, res) => {
     }
 })
 
-app.delete('/delete_acc', authenticationToken, async(req, res) => {
+app.delete('/delete_acc', authorizationToken, async(req, res) => {
     try {
         const result = await Users.delete_user(req.user_id)
         res.clearCookie('token').json(result);
@@ -92,7 +92,7 @@ app.delete('/delete_acc', authenticationToken, async(req, res) => {
     }
 })
 
-app.post('/logout', authenticationToken, (req, res) => {
+app.post('/logout', authorizationToken, (req, res) => {
     res.clearCookie('token').send('You are logged out now.')
 })
 
