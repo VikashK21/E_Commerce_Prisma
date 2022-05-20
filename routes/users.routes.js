@@ -1,5 +1,6 @@
 const app = require('express').Router();
 const joi = require('joi');
+
 const UsersCtrl = require('../controller/user.controller');
 const Users = new UsersCtrl();
 const {authenticationToken, authorizationToken, forLogout} = require('../auth/security.auth');
