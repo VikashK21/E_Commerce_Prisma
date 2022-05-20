@@ -7,12 +7,12 @@ const jwt = require('jsonwebtoken');
 // const secrete = require('crypto').randomBytes(64).toString('hex');
 // console.log(secrete);
 
-authorizationToken = (data) => {
+authenticationToken = (data) => {
     return jwt.sign(`${data.id}`, process.env.SECRETE_TOKEN)
 
 }
 
-authenticationToken = (req, res, next) => {
+authorizationToken = (req, res, next) => {
     const cookie = req.headers.cookie;
     if (cookie) {
         token = cookie.split('=')[1];
